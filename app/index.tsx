@@ -100,27 +100,27 @@ export default function Index() {
       </ScrollView>
 
       <View style={style.bottomNav}>
-        <TouchableOpacity style={style.navItem} onPress={alertNotification}>
+        <TouchableOpacity style={style.navItem}>
           <Ionicons name="home-outline" size={24} color="#999" />
           <Text style={style.navText}>Home</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={style.navItem} onPress={alertNotification}>
+        <TouchableOpacity style={style.navItem}>
           <Ionicons name="fast-food-outline" size={24} color="#999" />
           <Text style={style.navText}>Order</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={style.navItem} onPress={alertNotification}>
+        <TouchableOpacity style={style.navItem}>
           <Ionicons name="gift-outline" size={24} color="#999" />
           <Text style={style.navText}>Rewards&Offers</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={style.navItem} onPress={alertNotification}>
+        <TouchableOpacity style={style.navItem}>
           <Ionicons name="qr-code-outline" size={24} color="#999" />
           <Text style={style.navText}>Code</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={style.navItem} onPress={alertNotification}>
+        <TouchableOpacity style={style.navItem}>
           <Text style={style.navIcon}>⋯</Text>
           <Text style={style.navText}>More</Text>
         </TouchableOpacity>
