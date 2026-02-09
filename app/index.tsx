@@ -1,17 +1,31 @@
-import { Text, Image, View, Alert, StyleSheet, TouchableOpacity, StatusBar, ScrollView} from "react-native";
-import React from 'react'
-
+import { Ionicons } from "@expo/vector-icons";
+import React from "react";
+import {
+  Alert,
+  Image,
+  Platform,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 export default function Index() {
   const alertNotification = () => {
-    Alert.alert('Alert Button Pressed');
+    if (Platform.OS === "web") {
+      window.alert("Alert button pressed");
+    } else {
+      Alert.alert("Alert button pressed");
+    }
   };
 
   return (
-    <View style={style.container}>  
+    <View style={style.container}>
       <View style={style.header}>
-        <Image 
-          source = {require("../assets/images/McDonald.png")}
+        <Image
+          source={require("../assets/images/McDonald.png")}
           style={style.logo}
         />
       </View>
@@ -28,8 +42,10 @@ export default function Index() {
                 <Text style={style.yellowButtonText}>Start an order</Text>
               </TouchableOpacity>
             </View>
-            <Image 
-              source={{ uri: 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg' }}
+            <Image
+              source={{
+                uri: "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg",
+              }}
               style={style.cardImage}
             />
           </View>
@@ -48,7 +64,7 @@ export default function Index() {
                 <Text style={style.blackButtonText}>View offers</Text>
               </TouchableOpacity>
             </View>
-            <Image 
+            <Image
               source={require("../assets/images/fries.jpg")}
               style={style.cardImage}
             />
@@ -60,53 +76,77 @@ export default function Index() {
 
         {/* Double Cheesy Melt Card */}
         <View style={style.darkCard}>
-          <Image 
-            source={{ uri: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800' }}
+          <Image
+            source={{
+              uri: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800",
+            }}
             style={style.fullCardImage}
           />
           <View style={style.darkCardContent}>
             <Text style={style.whiteTitle}>Double Cheesy Melt</Text>
-            <Text style={style.whiteSubtitle}>Melt into warm, cheesy deliciousness.</Text>
+            <Text style={style.whiteSubtitle}>
+              Melt into warm, cheesy deliciousness.
+            </Text>
             <TouchableOpacity style={style.yellowButtonSmall}>
               <Text style={style.yellowButtonText}>Order Now</Text>
             </TouchableOpacity>
           </View>
         </View>
+        <TouchableOpacity style={style.alertButton} onPress={alertNotification}>
+          <Text style={style.alertButtonText}>Alert</Text>
+        </TouchableOpacity>
 
-        <View style={{ height: 100 }} />
+        <View style={{ height: 40 }} />
       </ScrollView>
 
       <View style={style.bottomNav}>
         <TouchableOpacity style={style.navItem} onPress={alertNotification}>
-          <Text style={style.navIcon}>🏠</Text>
-          <Text style={style.navTextActive}>Home</Text>
+          <Ionicons name="home-outline" size={24} color="#999" />
+          <Text style={style.navText}>Home</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={style.navItem} onPress={alertNotification}>
+          <Ionicons name="fast-food-outline" size={24} color="#999" />
+          <Text style={style.navText}>Order</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={style.navItem} onPress={alertNotification}>
+          <Ionicons name="gift-outline" size={24} color="#999" />
+          <Text style={style.navText}>Rewards&Offers</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={style.navItem} onPress={alertNotification}>
+          <Ionicons name="qr-code-outline" size={24} color="#999" />
+          <Text style={style.navText}>Code</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={style.navItem} onPress={alertNotification}>
+          <Text style={style.navIcon}>⋯</Text>
+          <Text style={style.navText}>More</Text>
         </TouchableOpacity>
       </View>
-
     </View>
   );
 }
 
-
-
-const style = StyleSheet.create ({
+const style = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop:StatusBar.currentHeight,
+    paddingTop: StatusBar.currentHeight,
   },
   header: {
     height: 80,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
     borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+    borderBottomColor: "#e0e0e0",
     paddingTop: 20,
   },
   logo: {
     width: 50,
     height: 40,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   content: {
     flex: 1,
@@ -114,58 +154,58 @@ const style = StyleSheet.create ({
   },
   menuTitle: {
     fontSize: 32,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 20,
     marginBottom: 16,
-    color: '#000',
+    color: "#000",
   },
   sectionTitle: {
     fontSize: 28,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 24,
     marginBottom: 16,
-    color: '#000',
+    color: "#000",
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 12,
-    overflow: 'hidden',
+    overflow: "hidden",
     marginBottom: 16,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
 
     borderWidth: 1,
-    borderColor: '#FFC72C',
+    borderColor: "#FFC72C",
   },
   yellowCard: {
-    backgroundColor: '#FFC72C',
+    backgroundColor: "#FFC72C",
     borderRadius: 12,
-    overflow: 'hidden',
+    overflow: "hidden",
     marginBottom: 16,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
   darkCard: {
-    backgroundColor: '#2C2C2C',
+    backgroundColor: "#2C2C2C",
     borderRadius: 12,
-    overflow: 'hidden',
+    overflow: "hidden",
     marginBottom: 16,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
   cardContent: {
-    flexDirection: 'row',
+    flexDirection: "row",
     padding: 20,
-    alignItems: 'center',
+    alignItems: "center",
   },
   textSection: {
     flex: 1,
@@ -173,67 +213,67 @@ const style = StyleSheet.create ({
   },
   cardTitle: {
     fontSize: 36,
-    fontWeight: 'bold',
-    color: '#000',
+    fontWeight: "bold",
+    color: "#000",
     marginBottom: 8,
   },
   cardSubtitle: {
     fontSize: 18,
-    color: '#000',
+    color: "#000",
     marginBottom: 16,
   },
   blackTitle: {
     fontSize: 32,
-    fontWeight: 'bold',
-    color: '#000',
+    fontWeight: "bold",
+    color: "#000",
     marginBottom: 8,
   },
   blackSubtitle: {
     fontSize: 16,
-    color: '#000',
+    color: "#000",
     marginBottom: 16,
   },
   whiteTitle: {
     fontSize: 28,
-    fontWeight: 'bold',
-    color: '#fff',
+    fontWeight: "bold",
+    color: "#fff",
     marginBottom: 8,
   },
   whiteSubtitle: {
     fontSize: 16,
-    color: '#fff',
+    color: "#fff",
     marginBottom: 16,
   },
   yellowButton: {
-    backgroundColor: '#FFC72C',
+    backgroundColor: "#FFC72C",
     paddingVertical: 14,
     paddingHorizontal: 24,
     borderRadius: 8,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
   },
   yellowButtonSmall: {
-    backgroundColor: '#FFC72C',
+    backgroundColor: "#FFC72C",
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 8,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
   },
   whiteButton: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     paddingVertical: 14,
     paddingHorizontal: 24,
     borderRadius: 8,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
   },
   yellowButtonText: {
-    color: '#000',
+    color: "#000",
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   blackButtonText: {
-    color: '#000',
+    color: "#000",
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   cardImage: {
     width: 140,
@@ -241,32 +281,45 @@ const style = StyleSheet.create ({
     borderRadius: 8,
   },
   fullCardImage: {
-    width: '100%',
+    width: "100%",
     height: 200,
   },
   darkCardContent: {
     padding: 20,
   },
   bottomNav: {
-    flexDirection: 'row',
+    flexDirection: "row",
     height: 70,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderTopWidth: 1,
-    borderTopColor: '#e0e0e0',
+    borderTopColor: "#e0e0e0",
     paddingBottom: 10,
   },
   navItem: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   navIcon: {
     fontSize: 24,
     marginBottom: 4,
+    color: "#999", //keep as grey please
   },
-  navTextActive: {
+  navText: {
     fontSize: 10,
-    color: '#000',
-    fontWeight: '600',
+    color: "#999", //keep same
   },
-})
+  alertButton: {
+    backgroundColor: "#FFCC00",
+    marginTop: 20,
+    marginBottom: 20,
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  alertButtonText: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#000",
+  },
+});
